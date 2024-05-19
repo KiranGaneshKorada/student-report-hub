@@ -1,8 +1,9 @@
 import React from "react";
 import { ComplaintCategory, Status } from "./ComplaintsInterfaces";
 import { $Enums } from "@prisma/client";
+import Link from "next/link";
 
-interface ComplaintSchema {
+ export interface ComplaintSchema {
   id: number;
   title: string;
   category: $Enums.Category;
@@ -53,10 +54,15 @@ const ComplaintsTable = ({ complaints }: ComplaintsTableProps) => {
                 </tr>
               </thead>
               <tbody>
-                {complaints.map((each_complaint,index) => (
-                  <tr key={index} className="odd:bg-white even:bg-gray-100 hover:bg-blue-100 dark:odd:bg-neutral-800 dark:even:bg-neutral-700 dark:hover:bg-neutral-700">
+                {complaints.map((each_complaint, index) => (
+                  <tr
+                    key={index}
+                    className="odd:bg-white even:bg-gray-100 hover:bg-blue-100 dark:odd:bg-neutral-800 dark:even:bg-neutral-700 dark:hover:bg-neutral-700"
+                  >
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
-                      {each_complaint.title}
+                      <Link href={`/complaints/${each_complaint.id}`}>
+                        {each_complaint.title}
+                      </Link>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">
                       <span
