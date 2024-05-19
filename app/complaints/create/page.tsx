@@ -4,31 +4,19 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { ComplaintCategory, Status } from "../ComplaintsInterfaces";
 
-enum Category {
-  CLASSROOM,
-  LABORATORY,
-  RESTROOMS,
-  LIBRARY,
-  CAFETERIA,
-  OUTDOOR,
-  TRANSPORT,
-  HALLS,
-}
-
-enum Urgency {
-  LOW,
-  MEDIUM,
-  HIGH,
-}
-
-interface ComplaintForm {
-  title: string;
-  category: Category;
-  location: string;
-  description: string;
-  urgency: Urgency;
-}
+interface ComplaintFormSchema {
+    id: number;
+    title: string;
+    category: ComplaintCategory;
+    location: string;
+    description: string;
+    urgency: ComplaintCategory;
+    status: Status;
+    createdAt: string;
+    updatedAt: string;
+  }
 
 const NewComplaintPage = () => {
   const [error, setError] = useState<string>("");
@@ -38,7 +26,7 @@ const NewComplaintPage = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ComplaintForm>();
+  } = useForm<ComplaintFormSchema>();
 
   return (
     <>
@@ -95,7 +83,7 @@ const NewComplaintPage = () => {
         })}
       >
         <div className="max-w-full ">
-          <label htmlFor="title" className=" block text-lg font-medium mb-2">
+          <label htmlFor="title" id="titlefield" className=" block text-lg font-medium mb-2">
             Title
           </label>
           <input

@@ -1,12 +1,19 @@
-import Link from "next/link";
+import prisma from "@/prisma/client";
 import React from "react";
+import CreateIssueButton from "./CreateIssueButton";
+import ComplaintsTable from "./ComplaintsTable";
 
-const page = () => {
+const page = async () => {
+  
+  const complaints = await prisma.complaint.findMany();
   return (
-    <div>
-      <button className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 ">
-        <Link href="/complaints/create">Report A Complaint</Link>
-      </button>
+    <div className="p-3">
+      <div>
+        <CreateIssueButton/>
+      </div>
+      <div>
+        <ComplaintsTable complaints={complaints}/>
+      </div>
     </div>
   );
 };
