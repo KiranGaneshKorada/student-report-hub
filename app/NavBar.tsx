@@ -8,8 +8,9 @@ const NavBar = () => {
   const currentPath = usePathname();
   return (
     <nav className=" flex space-x-5 border-b px-5 h-14 items-center">
-      <Link href="/" className="flex  text-l font-semibold items-center">
+      <Link href="/" className="text-blue-500 flex  text-l font-semibold items-center">
         <svg
+        className="text-blue-500"
           width="35"
           height="35"
           viewBox="0 0 100 100"
@@ -17,15 +18,16 @@ const NavBar = () => {
         >
           <path
             d="M10 20 H70 A10 10 0 0 1 80 30 V60 A10 10 0 0 1 70 70 H30 L10 90 Z"
-            stroke="black"
-            stroke-width="2"
+            stroke="currentColor"
+            strokeWidth="2"
+            fill="currentColor"
           />
-          <polygon points="50,10 30,20 70,20" fill="black" />
-          <rect x="47" y="20" width="6" height="10" fill="black" />
+          <polygon points="50,10 30,20 70,20" fill="currentColor" />
+          <rect x="47" y="20" width="6" height="10" fill="currentColor" />
           <polyline
             points="30,45 45,60 70,35"
             stroke="white"
-            stroke-width="4"
+            strokeWidth="4"
             fill="none"
           />
         </svg>
@@ -35,8 +37,8 @@ const NavBar = () => {
         <li>
           <Link
             href="/"
-            className={` hover:text-slate-800 ${
-              currentPath == "/" ? "text-slate-950" : "text-slate-500"
+            className={` hover:text-gray-400 ${
+              currentPath == "/" ? "text-blue-500" : "text-gray-600"
             }`}
           >
             Dashboard
@@ -45,8 +47,8 @@ const NavBar = () => {
         <li>
           <Link
             href="/complaints"
-            className={` hover:text-slate-800 ${
-              currentPath == "/complaints" ? "text-slate-950" : "text-slate-500"
+            className={` hover:text-gray-400 ${
+              currentPath == "/complaints" ? "text-blue-500" : "text-gray-600"
             }`}
           >
             Complaints
