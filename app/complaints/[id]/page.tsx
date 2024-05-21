@@ -1,16 +1,15 @@
-import prisma from "@/prisma/client";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
+import fetchComplaint from "./fetchComplaint";
 
 interface IssueDetailPageProps {
   params: { id: string };
 }
 
 const IssueDetailPage = async ({ params: { id } }: IssueDetailPageProps) => {
-  const complaint = await prisma.complaint.findUnique({
-    where: { id: parseInt(id) },
-  });
+  const complaint = await fetchComplaint(id);
+
   
   if (!complaint) {
     notFound();

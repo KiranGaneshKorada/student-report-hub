@@ -7,23 +7,12 @@ import { useForm } from "react-hook-form";
 import { ComplaintCategory, Status } from "../ComplaintsInterfaces";
 import { ComplaintSchema } from "../ComplaintsTable";
 
-interface ComplaintFormSchema {
-    id: number;
-    title: string;
-    category: ComplaintCategory;
-    location: string;
-    description: string;
-    urgency: ComplaintCategory;
-    status: Status;
-    createdAt: string;
-    updatedAt: string;
-  }
-
   interface ComplaintFormProps{
+    onHandleFormSubmission:(data:ComplaintSchema)=>void;
     complaint?:ComplaintSchema
   }
 
-const ComplaintFormPage = ({complaint}:ComplaintFormProps) => {
+const ComplaintFormPage = ({onHandleFormSubmission,complaint}:ComplaintFormProps) => {
   const [error, setError] = useState<string>("");
   const [isSubmitting,setIsSubmitting]=useState<boolean>(false);
   const router = useRouter();
@@ -88,7 +77,7 @@ const ComplaintFormPage = ({complaint}:ComplaintFormProps) => {
         onSubmit={handleSubmit(async (data) => {
           try {
             setIsSubmitting(true);
-            await axios.post("/api/complaints", data);
+            onHandleFormSubmission(data);
             router.push("/complaints");
           } catch (error) {
             setIsSubmitting(false);

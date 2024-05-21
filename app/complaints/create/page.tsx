@@ -1,9 +1,14 @@
-import ComplaintFormPage from "../_components/ComplaintForm"
+'use client'
+import axios from "axios";
+import ComplaintFormPage from "../_components/ComplaintForm";
+import router from "next/router";
+import { ComplaintSchema } from "../ComplaintsTable";
 
 const CreateComplaintsPage = () => {
-  return (
-    <ComplaintFormPage/>
-  )
-}
+  const onHandleFormSubmission = async (data: ComplaintSchema) => {
+    await axios.post("/api/complaints", data);
+  };
+  return <ComplaintFormPage onHandleFormSubmission={onHandleFormSubmission}/>;
+};
 
-export default CreateComplaintsPage
+export default CreateComplaintsPage;

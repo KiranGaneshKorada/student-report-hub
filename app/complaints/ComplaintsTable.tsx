@@ -87,4 +87,6 @@ const ComplaintsTable = ({ complaints }: ComplaintsTableProps) => {
   );
 };
 
+export const dynamic='force-dynamic';
+
 export default ComplaintsTable;
