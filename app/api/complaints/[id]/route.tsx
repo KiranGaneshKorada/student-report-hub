@@ -24,3 +24,12 @@ export async function PATCH(
 
   return NextResponse.json(updatedComplaint);
 }
+
+export async function DELETE(
+  request: NextRequest,
+  { params: { id } }: GetByIdProps
+) {
+  await prisma.complaint.delete({ where: { id: parseInt(id) } });
+
+  return NextResponse.json({});
+}
