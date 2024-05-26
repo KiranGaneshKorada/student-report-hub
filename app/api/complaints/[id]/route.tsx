@@ -1,4 +1,5 @@
 import prisma from "@/prisma/client";
+import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 
 interface GetByIdProps {
@@ -9,6 +10,10 @@ export async function PATCH(
   request: NextRequest,
   { params: { id } }: GetByIdProps
 ) {
+  const session = await getServerSession();
+  if (!session) {
+    return NextResponse.json({}, { status: 401 });
+  }
   const body = await request.json();
 
   const updatedComplaint = await prisma.complaint.update({
@@ -29,6 +34,10 @@ export async function DELETE(
   request: NextRequest,
   { params: { id } }: GetByIdProps
 ) {
+  const session = await getServerSession();
+  if (!session) {
+    return NextResponse.json({}, { status: 401 });
+  }
   await prisma.complaint.delete({ where: { id: parseInt(id) } });
 
   return NextResponse.json({});

@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "./NavBar";
 import PrelineScript from "./PrelineScript";
+import NextAuthSessionProvider from "./NextAuthSessionProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,8 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <NextAuthSessionProvider>
         <NavBar />
         <main>{children}</main>
+        </NextAuthSessionProvider>
       </body>
       <PrelineScript/>
     </html>

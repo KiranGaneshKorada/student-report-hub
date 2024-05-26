@@ -1,16 +1,22 @@
 "use client";
 
+import { useSession } from "next-auth/react";
+import { Span } from "next/dist/trace";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
 const NavBar = () => {
   const currentPath = usePathname();
+  const { status, data: userData } = useSession();
   return (
     <nav className=" flex space-x-5 border-b px-5 h-14 items-center">
-      <Link href="/" className="text-blue-500 flex  text-l font-semibold items-center">
+      <Link
+        href="/"
+        className="text-blue-500 flex  text-l font-semibold items-center"
+      >
         <svg
-        className="text-blue-500"
+          className="text-blue-500"
           width="35"
           height="35"
           viewBox="0 0 100 100"
@@ -55,6 +61,12 @@ const NavBar = () => {
           </Link>
         </li>
       </ul>
+      {status === "authenticated" && (
+        <Link href={"/api/auth/signout"}>Logout {userData.user?.email}</Link>
+      )}
+      {status === "unauthenticated" && (
+        <Link href={"/api/auth/signin"}>Login</Link>
+      )}
     </nav>
   );
 };

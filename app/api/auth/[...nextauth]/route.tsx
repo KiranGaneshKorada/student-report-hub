@@ -6,6 +6,9 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 const handler = NextAuth({
   adapter: PrismaAdapter(prisma),
+  session: {
+    strategy: "jwt",
+  },
   providers: [
     CredentialsProvider({
       name: "Credentials",
