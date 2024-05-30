@@ -4,6 +4,7 @@ import "./globals.css";
 import NavBar from "./NavBar";
 import PrelineScript from "./PrelineScript";
 import NextAuthSessionProvider from "./NextAuthSessionProvider";
+import QueryClientProvider from "./QueryClientProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,12 +21,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NextAuthSessionProvider>
-        <NavBar />
-        <main>{children}</main>
-        </NextAuthSessionProvider>
+        <QueryClientProvider>
+          <NextAuthSessionProvider>
+            <NavBar />
+            <main>{children}</main>
+          </NextAuthSessionProvider>
+        </QueryClientProvider>
       </body>
-      <PrelineScript/>
+      <PrelineScript />
     </html>
   );
 }
