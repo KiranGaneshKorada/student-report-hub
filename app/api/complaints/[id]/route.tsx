@@ -6,6 +6,17 @@ interface GetByIdProps {
   params: { id: string };
 }
 
+export async function GET(
+  request: NextRequest,
+  { params: { id } }: GetByIdProps
+) {
+  const complaint = await prisma.complaint.findUnique({
+    where: { id: parseInt(id) },
+  });
+
+  return NextResponse.json(complaint);
+}
+
 export async function PATCH(
   request: NextRequest,
   { params: { id } }: GetByIdProps
