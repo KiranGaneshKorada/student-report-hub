@@ -13,6 +13,7 @@ import Link from "next/link";
   status: $Enums.Status;
   createdAt: Date;
   updatedAt: Date;
+  userEmailId:string
 }
 interface ComplaintsTableProps {
   complaints: ComplaintSchema[];

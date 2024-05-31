@@ -5,6 +5,7 @@ import router from "next/router";
 import { ComplaintSchema } from "../ComplaintsTable";
 
 const CreateComplaintsPage = () => {
+  
   const onHandleFormSubmission = async (data: ComplaintSchema) => {
     await axios.post("/api/complaints", data);
   };

@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ComplaintCategory, Status } from "../ComplaintsInterfaces";
 import { ComplaintSchema } from "../ComplaintsTable";
+import { useSession } from "next-auth/react";
 
   interface ComplaintFormProps{
     onHandleFormSubmission:(data:ComplaintSchema)=>void;
@@ -15,6 +16,7 @@ import { ComplaintSchema } from "../ComplaintsTable";
 const ComplaintFormPage = ({onHandleFormSubmission,complaint}:ComplaintFormProps) => {
   const [error, setError] = useState<string>("");
   const [isSubmitting,setIsSubmitting]=useState<boolean>(false);
+  const {data:userData}=useSession();
   const router = useRouter();
   const {
     register,
@@ -77,6 +79,8 @@ const ComplaintFormPage = ({onHandleFormSubmission,complaint}:ComplaintFormProps
         onSubmit={handleSubmit(async (data) => {
           try {
             setIsSubmitting(true);
+            data.userEmailId=userData?.user?.email!
+            console.log(data)
             onHandleFormSubmission(data);
             router.push("/complaints");
           } catch (error) {

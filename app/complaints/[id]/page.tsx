@@ -1,30 +1,49 @@
+"use client";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import fetchComplaint from "./fetchComplaint";
 import DeleteComplaintButton from "./DeleteComplaintButton";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { ComplaintSchema } from "../ComplaintsTable";
+import { useSession } from "next-auth/react";
 
 interface IssueDetailPageProps {
   params: { id: string };
 }
 
 const IssueDetailPage = async ({ params: { id } }: IssueDetailPageProps) => {
-  const complaint = await fetchComplaint(id);
+  const {
+    data: complaint,
+    error,
+    isLoading,
+  } = useQuery<ComplaintSchema>({
+    queryKey: ["complaint"],
+    queryFn: () =>
+      axios.get("/api/complaints/" + id).then((response) => response.data),
+    retry: 3,
+  });
 
-  
-  if (!complaint) {
-    notFound();
-  }
+  const { data } = useSession();
+
   return (
     <div>
-      <p>{complaint.title}</p>
-      <p>{complaint.category}</p>
-      <p>{complaint.description}</p>
-      <p>{complaint.location}</p>
-      <p>{complaint.urgency}</p>
-      <p>{complaint.status}</p>
-      <button className="m-3 p-3 bg-blue-500 text-white"><Link href={`/complaints/${complaint.id}/edit`}>Edit</Link></button>
-      <DeleteComplaintButton id={id}/>
+      <p>{complaint?.title}</p>
+      <p>{complaint?.category}</p>
+      <p>{complaint?.description}</p>
+      <p>{complaint?.location}</p>
+      <p>{complaint?.urgency}</p>
+      <p>{complaint?.status}</p>
+      <p>{complaint?.userEmailId}</p>
+      {data?.user?.email === complaint?.userEmailId && (
+        <>
+          <button className="m-3 p-3 bg-blue-500 text-white">
+            <Link href={`/complaints/${complaint?.id}/edit`}>Edit</Link>
+          </button>
+          <DeleteComplaintButton id={id} />
+        </>
+      )}
     </div>
   );
 };

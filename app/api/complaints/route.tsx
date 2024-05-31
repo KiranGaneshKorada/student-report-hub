@@ -16,6 +16,7 @@ export async function POST(request: NextRequest) {
       location: body.location,
       category: body.category,
       urgency: body.urgency,
+      userEmailId:body.userEmailId,
     },
   });
 
