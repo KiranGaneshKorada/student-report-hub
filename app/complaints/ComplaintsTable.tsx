@@ -55,7 +55,7 @@ const ComplaintsTable = ({ complaints }: ComplaintsTableProps) => {
                 </tr>
               </thead>
               <tbody>
-                {complaints.map((each_complaint, index) => (
+                {complaints?.map((each_complaint, index) => (
                   <tr
                     key={index}
                     className="odd:bg-white even:bg-gray-100 hover:bg-blue-100 dark:odd:bg-neutral-800 dark:even:bg-neutral-700 dark:hover:bg-neutral-700"
@@ -75,7 +75,7 @@ const ComplaintsTable = ({ complaints }: ComplaintsTableProps) => {
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">
-                      {each_complaint.createdAt.toDateString()}
+                      {each_complaint.createdAt.toString()}
                     </td>
                   </tr>
                 ))}
