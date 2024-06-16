@@ -1,8 +1,8 @@
 'use client'
 import axios from "axios";
-import ComplaintFormPage from "../_components/ComplaintForm";
+import ComplaintFormPage from "../_helper_components/ComplaintForm";
 import router from "next/router";
-import { ComplaintSchema } from "../ComplaintsTable";
+import { ComplaintSchema } from "../_helper_components/ComplaintsTable";
 
 const CreateComplaintsPage = () => {
   

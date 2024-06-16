@@ -1,8 +1,8 @@
 'use client'
 import React from "react";
-import ComplaintFormPage from "../../_components/ComplaintForm";
+import ComplaintFormPage from "../../_helper_components/ComplaintForm";
 import axios from "axios";
-import { ComplaintSchema } from "../../ComplaintsTable";
+import { ComplaintSchema } from "../../_helper_components/ComplaintsTable";
 
 interface EditComplaintPageProps {
   complaint: ComplaintSchema;

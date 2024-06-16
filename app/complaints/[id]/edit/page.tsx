@@ -4,7 +4,7 @@ import { notFound, useRouter } from "next/navigation";
 import axios from "axios";
 import fetchComplaint from "../fetchComplaint";
 import EditComplaint from "./EditComplaint";
-import { ComplaintSchema } from "../../ComplaintsTable";
+import { ComplaintSchema } from "../../_helper_components/ComplaintsTable";
 import { useQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 

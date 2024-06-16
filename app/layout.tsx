@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import NavBar from "./NavBar";
-import PrelineScript from "./PrelineScript";
-import NextAuthSessionProvider from "./NextAuthSessionProvider";
-import QueryClientProvider from "./QueryClientProvider";
+import NavBar from "./_helper_components/NavBar";
+import PrelineScript from "./_helper_components/PrelineScript";
+import NextAuthSessionProvider from "./_helper_components/NextAuthSessionProvider";
+import QueryClientProvider from "./_helper_components/QueryClientProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 

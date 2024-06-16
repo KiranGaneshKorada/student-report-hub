@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import CreateIssueButton from "./CreateIssueButton";
-import ComplaintsTable from "./ComplaintsTable";
-import StatusFilter from "./StatusFilter";
-import UrgencyFilter from "./UrgencyFilter";
+import CreateIssueButton from "./_helper_components/CreateIssueButton";
+import ComplaintsTable from "./_helper_components/ComplaintsTable";
+import StatusFilter from "./_helper_components/StatusFilter";
+import UrgencyFilter from "./_helper_components/UrgencyFilter";
 
 export interface SearchParamsProps {
   queryParams: any;

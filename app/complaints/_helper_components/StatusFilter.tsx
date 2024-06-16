@@ -1,6 +1,6 @@
 import React from "react";
 import FilterComplaint from "./FilterComplaint";
-import { SearchParamsProps } from "./page";
+import { SearchParamsProps } from "../page";
 import { Status } from "@prisma/client";
 
 const StatusFilter = ({ queryParams, setQueryParams }: SearchParamsProps) => {

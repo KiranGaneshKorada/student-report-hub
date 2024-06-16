@@ -1,6 +1,6 @@
 import React from "react";
-import CreateIssueButton from "./CreateIssueButton";
-import ComplaintsTable from "./ComplaintsTable";
+import CreateIssueButton from "./_helper_components/CreateIssueButton";
+import ComplaintsTable from "./_helper_components/ComplaintsTable";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 

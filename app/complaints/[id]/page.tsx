@@ -6,7 +6,7 @@ import fetchComplaint from "./fetchComplaint";
 import DeleteComplaintButton from "./DeleteComplaintButton";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { ComplaintSchema } from "../ComplaintsTable";
+import { ComplaintSchema } from "../_helper_components/ComplaintsTable";
 import { useSession } from "next-auth/react";
 
 interface IssueDetailPageProps {

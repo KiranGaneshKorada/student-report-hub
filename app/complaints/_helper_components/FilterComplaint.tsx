@@ -1,6 +1,6 @@
 "use client";
 import { Status, Urgency } from "@prisma/client";
-import { SearchParamsProps } from "./page";
+import { SearchParamsProps } from "../page";
 
 interface FilterComplaintProps extends SearchParamsProps {
   complaintFilterOptions: { label: string; value?: Urgency|Status }[];
