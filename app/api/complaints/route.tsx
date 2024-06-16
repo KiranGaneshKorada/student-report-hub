@@ -1,18 +1,39 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/prisma/client";
 import { getServerSession } from "next-auth";
+import { Status, Urgency } from "@prisma/client";
 
-export async function GET(request:NextRequest){
-  // console.log(request)
-  const complaints=await prisma.complaint.findMany()
-  // console.log(complaints)
-  return NextResponse.json(complaints,{status:201});
+export async function GET(request: NextRequest) {
+  type StatusKey = keyof typeof Status;
+  type UrgencyKey = keyof typeof Urgency;
+  const statusParam = request.nextUrl.searchParams.get("status");
+  const urgencyParam = request.nextUrl.searchParams.get("urgency");
+
+  const where: { status?: StatusKey; urgency?: UrgencyKey } = {};
+
+  if (statusParam) {
+    const status = Status[statusParam as StatusKey];
+    where.status = status;
+  }
+
+  if (urgencyParam) {
+    const urgency = Urgency[urgencyParam as UrgencyKey];
+    where.urgency = urgency;
+  }
+
+  const complaints = await prisma.complaint.findMany({ where: where });
+  console.log(complaints)
+  return NextResponse.json(complaints, { status: 201 });
 }
 
+
+
+
+
 export async function POST(request: NextRequest) {
-  const session=await getServerSession();
-  if(!session){
-    return NextResponse.json({},{status:401})
+  const session = await getServerSession();
+  if (!session) {
+    return NextResponse.json({}, { status: 401 });
   }
   const body = await request.json();
 
@@ -23,7 +44,7 @@ export async function POST(request: NextRequest) {
       location: body.location,
       category: body.category,
       urgency: body.urgency,
-      userEmailId:body.userEmailId,
+      userEmailId: body.userEmailId,
     },
   });
 

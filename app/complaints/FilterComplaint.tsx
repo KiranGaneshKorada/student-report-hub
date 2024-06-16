@@ -1,8 +1,9 @@
 "use client";
+import { Status, Urgency } from "@prisma/client";
 import { SearchParamsProps } from "./page";
 
 interface FilterComplaintProps extends SearchParamsProps {
-  complaintFilterOptions: { label: string; value: string }[];
+  complaintFilterOptions: { label: string; value?: Urgency|Status }[];
   queryParamKey: string;
 }
 
@@ -19,7 +20,7 @@ const FilterComplaint = ({
         onChange={(e) => {
           e.preventDefault();
           const val = e.currentTarget.value;
-          if (val.length > 0) {
+          if (val) {
             setQueryParams((previousState: any) => ({
               ...previousState,
               [queryParamKey]: val,
@@ -36,7 +37,7 @@ const FilterComplaint = ({
         }}
       >
         {complaintFilterOptions.map((each_option) => (
-          <option key={each_option.value} value={each_option.value}>
+          <option key={each_option.value} value={each_option.value ?? ""}>
             {each_option.label}
           </option>
         ))}

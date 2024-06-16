@@ -1,7 +1,8 @@
-import React from "react";
-import { ComplaintCategory, Status } from "./ComplaintsInterfaces";
+'use client'
 import { $Enums } from "@prisma/client";
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
  export interface ComplaintSchema {
   id: number;
@@ -16,7 +17,7 @@ import Link from "next/link";
   userEmailId:string
 }
 interface ComplaintsTableProps {
-  complaints: ComplaintSchema[];
+  queryParams: any;
 }
 
 const statusMap: { [key: string]: string } = {
@@ -25,7 +26,28 @@ const statusMap: { [key: string]: string } = {
   CLOSED: "bg-teal-100 text-teal-800 ",
 };
 
-const ComplaintsTable = ({ complaints }: ComplaintsTableProps) => {
+const ComplaintsTable = ({ queryParams }: ComplaintsTableProps) => {
+
+  
+  const {
+    data: complaints,
+    error,
+    isLoading,
+  } = useQuery<ComplaintSchema[]>({
+    queryKey: ["complaints", queryParams],
+    queryFn: async () => {
+      const res = await axios.get("/api/complaints",{
+        params: queryParams
+      });
+      console.log(res.data);
+      return res.data;
+    },
+  });
+
+  if(error || !complaints) return <></>
+
+  if(isLoading) return <>Loading</>;
+
   return (
     <div className="flex flex-col">
       <div className="-m-1.5 overflow-x-auto">
@@ -55,7 +77,7 @@ const ComplaintsTable = ({ complaints }: ComplaintsTableProps) => {
                 </tr>
               </thead>
               <tbody>
-                {complaints?.map((each_complaint, index) => (
+                {complaints?.map((each_complaint:ComplaintSchema, index:number) => (
                   <tr
                     key={index}
                     className="odd:bg-white even:bg-gray-100 hover:bg-blue-100 dark:odd:bg-neutral-800 dark:even:bg-neutral-700 dark:hover:bg-neutral-700"
