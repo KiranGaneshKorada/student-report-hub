@@ -2,8 +2,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
-import fetchComplaint from "./fetchComplaint";
-import DeleteComplaintButton from "./DeleteComplaintButton";
+import fetchComplaint from "./_helper_components/fetchComplaint";
+import DeleteComplaintButton from "./_helper_components/DeleteComplaintButton";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { ComplaintSchema } from "../_helper_components/ComplaintsTable";
