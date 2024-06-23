@@ -8,9 +8,9 @@ interface Props {
 }
 
 const statusMap: { [key: string]: string } = {
-  OPEN: "  text-red-800  ",
-  IN_PROGRESS: " text-blue-800  ",
-  CLOSED: " text-teal-800 ",
+  OPEN: "  text-red-600  ",
+  IN_PROGRESS: " text-blue-600  ",
+  CLOSED: " text-teal-600 ",
 };
 
 
