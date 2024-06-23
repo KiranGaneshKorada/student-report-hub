@@ -1,7 +1,6 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { Span } from "next/dist/trace";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -40,7 +39,7 @@ const NavBar = () => {
         Student Report Hub
       </Link>
       <ul className="flex space-x-5 ">
-        <li>
+        <li key={"dashboard"}>
           <Link
             href="/"
             className={` hover:text-gray-400 ${
@@ -50,7 +49,7 @@ const NavBar = () => {
             Dashboard
           </Link>
         </li>
-        <li>
+        <li key={"complaints"}>
           <Link
             href="/complaints"
             className={` hover:text-gray-400 ${

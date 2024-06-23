@@ -44,9 +44,9 @@ const ComplaintsTable = ({ queryParams }: ComplaintsTableProps) => {
     },
   });
 
-  if(error || !complaints) return <></>
+  // if(error || !complaints) return <>error</>
 
-  if(isLoading) return <>Loading</>;
+  // if(isLoading) return <>Loading</>;
 
   return (
     <div className="flex flex-col">

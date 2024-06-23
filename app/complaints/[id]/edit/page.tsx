@@ -3,16 +3,16 @@ import React from "react";
 import { notFound, useRouter } from "next/navigation";
 import axios from "axios";
 import fetchComplaint from "../_helper_components/fetchComplaint";
-import EditComplaint from "./EditComplaint";
 import { ComplaintSchema } from "../../_helper_components/ComplaintsTable";
 import { useQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
+import EditComplaint from "./_helper_component/EditComplaint";
 
 interface EditComplaintPageProps {
   params: { id: string };
 }
 
-const EditComplaintPage = async ({
+const EditComplaintPage =  ({
   params: { id },
 }: EditComplaintPageProps) => {
   const {
@@ -26,11 +26,13 @@ const EditComplaintPage = async ({
     retry: 3,
   });
 
+  const router = useRouter();
+
+
   const {data}=useSession();
 
 
   if(data?.user?.email!=complaint?.userEmailId){
-    const router = useRouter();
     router.push("/complaints/"+id)
 
   }

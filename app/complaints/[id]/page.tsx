@@ -13,7 +13,7 @@ interface IssueDetailPageProps {
   params: { id: string };
 }
 
-const IssueDetailPage = async ({ params: { id } }: IssueDetailPageProps) => {
+const IssueDetailPage = ({ params: { id } }: IssueDetailPageProps) => {
   const {
     data: complaint,
     error,

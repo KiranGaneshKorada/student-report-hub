@@ -17,6 +17,7 @@ const LatestComplaints = async () => {
 
   return (
     <>
+    <h3>Latest Compaints</h3>
       <table className="min-w-full divide-y divide-gray-200 dark:divide-neutral-700 p-3">
         <tbody>
           {complaints?.map((each_complaint: ComplaintSchema, index: number) => (

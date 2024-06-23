@@ -4,13 +4,14 @@ import CreateIssueButton from "./_helper_components/CreateIssueButton";
 import ComplaintsTable from "./_helper_components/ComplaintsTable";
 import StatusFilter from "./_helper_components/StatusFilter";
 import UrgencyFilter from "./_helper_components/UrgencyFilter";
+import { Metadata } from "next";
 
 export interface SearchParamsProps {
   queryParams: any;
   setQueryParams: React.Dispatch<React.SetStateAction<any>>;
 }
 
-const page = () => {
+const Complaints = () => {
   const [queryParams, setQueryParams] = useState({});
 
   return (
@@ -33,6 +34,6 @@ const page = () => {
   );
 };
 
-export const dynamic = "force-dynamic";
 
-export default page;
+
+export default Complaints;

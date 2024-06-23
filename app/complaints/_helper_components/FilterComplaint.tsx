@@ -28,7 +28,7 @@ const FilterComplaint = ({
           } else {
             setQueryParams((previousState: any) => {
               const newState = { ...previousState };
-              delete newState[queryParamKey]; // Remove the specific key-value pair
+              delete newState[queryParamKey]; 
               return {
                 ...newState,
               };
@@ -36,8 +36,8 @@ const FilterComplaint = ({
           }
         }}
       >
-        {complaintFilterOptions.map((each_option) => (
-          <option key={each_option.value} value={each_option.value ?? ""}>
+        {complaintFilterOptions.map((each_option,index) => (
+          <option key={index} value={each_option.value ?? ""}>
             {each_option.label}
           </option>
         ))}
