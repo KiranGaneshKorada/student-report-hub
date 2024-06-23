@@ -4,6 +4,7 @@ import LatestComplaints from "./_helper_components/DashBoard_Components/LatestCo
 import StatusSummary from "./_helper_components/DashBoard_Components/ComplaintsSummary/StatusSummary";
 import { Metadata } from "next";
 import prisma from "@/prisma/client";
+import ComplaintChart from "./_helper_components/DashBoard_Components/ComplaintChart";
 
 export default async function Home() {
 
@@ -22,6 +23,11 @@ export default async function Home() {
     <div className="p-5">
       <div className=" m-2">
       <StatusSummary open={open}
+          inProgress={inProgress}
+          closed={closed}/>
+      </div>
+      <div>
+        <ComplaintChart  open={open}
           inProgress={inProgress}
           closed={closed}/>
       </div>

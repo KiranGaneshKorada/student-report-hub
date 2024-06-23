@@ -30,7 +30,7 @@ const StatusSummary = ({open,inProgress,closed}:Props) => {
   ];
   return (
     <div className="flex flex-row space-x-2">
-      {containers.map((each_card_data)=>(<div className="flex flex-col bg-white border shadow-sm rounded-xl">
+      {containers.map((each_card_data,index)=>(<div  key={index}className="flex flex-col bg-white border shadow-sm rounded-xl">
         <div className="bg-gray-100 border-b rounded-t-xl py-3 px-4 md:py-4 md:px-5">
           <p className="mt-1 text-md font-semibold text-blue-500">
             {each_card_data.label}
