@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <QueryClientProvider>
           <NextAuthSessionProvider>
-            <NavBar />
+            {/* <NavBar /> */}
             <main>{children}</main>
           </NextAuthSessionProvider>
         </QueryClientProvider>

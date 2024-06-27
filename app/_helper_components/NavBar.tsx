@@ -9,7 +9,7 @@ const NavBar = () => {
   const currentPath = usePathname();
   const { status, data: userData } = useSession();
   return (
-    <nav className=" flex space-x-5 border-b px-5 h-14 items-center">
+    <nav className=" flex space-x-5 border-b px-5 h-14 items-center m-0">
       <Link
         href="/"
         className="text-blue-500 flex  text-l font-semibold items-center"

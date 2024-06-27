@@ -16,19 +16,18 @@ const ComplaintChart = ({open,inProgress,closed}:Props) => {
     { label: 'Closed', value: closed },
   ];
   return (
-    <div>
-      <ResponsiveContainer width="100%" height={300}>
+    
+      <ResponsiveContainer width="100%" height={400}>
         <BarChart data={data}>
           <XAxis dataKey="label" />
           <YAxis />
           <Bar
             dataKey="value"
-            barSize={60}
+            barSize={50}
             fill='#3b82f6' 
           />
         </BarChart>
       </ResponsiveContainer>
-    </div>
   )
 }
 
