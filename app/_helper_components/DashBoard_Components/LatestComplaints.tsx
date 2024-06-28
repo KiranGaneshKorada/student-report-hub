@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { ComplaintSchema } from "@/app/complaints/_helper_components/ComplaintsTable";
 
-const statusMap: { [key: string]: string } = {
+const urgencyMap: { [key: string]: string } = {
   HIGH: " bg-red-100 text-red-800  ",
   MEDIUM: "bg-blue-100 text-blue-800  ",
   LOW: "bg-teal-100 text-teal-800 ",
@@ -51,7 +51,7 @@ const LatestComplaints = async () => {
               <td className="md:max-lg:hidden max-sm:hidden flex-col px-6 py-4 whitespace-nowrap text-md font-medium text-gray-800">
                 <span
                   className={`inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium ${
-                    statusMap[each_complaint.urgency]
+                    urgencyMap[each_complaint.urgency]
                   }`}
                 >
                   {each_complaint.urgency}

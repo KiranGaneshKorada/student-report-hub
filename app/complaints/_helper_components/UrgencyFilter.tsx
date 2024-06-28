@@ -5,20 +5,20 @@ import { Urgency } from "@prisma/client";
 
 const UrgencyFilter = ({ queryParams, setQueryParams }: SearchParamsProps) => {
   const complaintUrgencyFilterOptions: { label: string; value?: Urgency }[] = [
-    { label: "All" },
+    { label: "Filter By Urgency" },
     { label: "Low", value: "LOW" },
     { label: "High", value: "HIGH" },
     { label: "Medium", value: "MEDIUM" },
   ];
   return (
-    <div>
+    <>
       <FilterComplaint
         complaintFilterOptions={complaintUrgencyFilterOptions}
         queryParamKey="urgency"
         queryParams={queryParams}
         setQueryParams={setQueryParams}
       />
-    </div>
+    </>
   );
 };
 
