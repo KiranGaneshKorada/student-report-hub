@@ -22,7 +22,6 @@ export async function GET(request: NextRequest) {
   }
 
   const complaints = await prisma.complaint.findMany({ where: where });
-  console.log(complaints)
   return NextResponse.json(complaints, { status: 201 });
 }
 

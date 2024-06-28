@@ -44,7 +44,6 @@ const ComplaintsTable = ({ queryParams }: ComplaintsTableProps) => {
       const res = await axios.get("/api/complaints", {
         params: queryParams,
       });
-      console.log(res.data);
       return res.data;
     },
   });
