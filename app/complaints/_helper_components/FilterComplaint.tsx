@@ -16,7 +16,7 @@ const FilterComplaint = ({
     <>
       <select
         name="status"
-        id="complaintStatusFilter"
+        id={queryParamKey}
         className="py-3 px-3 pe-4 block w-full bg-gray-100 border-transparent rounded-lg text-sm max-sm:text-xs focus:border-blue-500 focus:ring-blue-500  "
         onChange={(e) => {
           e.preventDefault();
