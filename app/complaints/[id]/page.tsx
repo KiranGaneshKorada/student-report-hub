@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { ComplaintSchema } from "../_helper_components/ComplaintsTable";
 import { useSession } from "next-auth/react";
+import { toast } from "react-toastify";
 
 interface IssueDetailPageProps {
   params: { id: string };
@@ -25,6 +26,34 @@ const IssueDetailPage = ({ params: { id } }: IssueDetailPageProps) => {
 
   const { data } = useSession();
   const router = useRouter();
+
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete('/api/complaints/' + id);
+      toast.success('Complaint deleted successfully!', {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      router.push('/complaints');
+      router.refresh();
+    } catch (error) {
+      toast.error('Failed to delete the complaint.', {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
 
   if (isLoading) {
     return (
@@ -202,15 +231,7 @@ const IssueDetailPage = ({ params: { id } }: IssueDetailPageProps) => {
           </button>
           <button
             className="py-3 px-5 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-            onClick={async () => {
-              try {
-                await axios.delete("/api/complaints/" + complaint.id);
-                router.push("/complaints");
-                router.refresh();
-              } catch (error) {
-                notFound();
-              }
-            }}
+            onClick={handleDelete}
           >
             Delete
           </button>

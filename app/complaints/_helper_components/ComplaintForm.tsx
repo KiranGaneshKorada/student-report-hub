@@ -1,10 +1,7 @@
 "use client";
-
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { ComplaintCategory, Status } from "./ComplaintsInterfaces";
 import { ComplaintSchema } from "./ComplaintsTable";
 import { useSession } from "next-auth/react";
 
