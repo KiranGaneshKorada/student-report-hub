@@ -5,33 +5,36 @@ import { useForm } from "react-hook-form";
 import { ComplaintSchema } from "./ComplaintsTable";
 import { useSession } from "next-auth/react";
 
-  interface ComplaintFormProps{
-    onHandleFormSubmission:(data:ComplaintSchema)=>void;
-    complaint?:ComplaintSchema
-  }
+interface ComplaintFormProps {
+  onHandleFormSubmission: (data: ComplaintSchema) => void;
+  complaint?: ComplaintSchema;
+}
 
-const ComplaintFormPage = ({onHandleFormSubmission,complaint}:ComplaintFormProps) => {
+const ComplaintFormPage = ({
+  onHandleFormSubmission,
+  complaint,
+}: ComplaintFormProps) => {
   const [error, setError] = useState<string>("");
-  const [isSubmitting,setIsSubmitting]=useState<boolean>(false);
-  const {data:userData}=useSession();
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const { data: userData } = useSession();
   const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
-    setValue
+    setValue,
   } = useForm<ComplaintSchema>();
 
-  if(complaint){
-    setValue('title',complaint.title);
-    setValue('category',complaint.category);
-    setValue('location',complaint.location);
-    setValue('urgency',complaint.urgency);
-    setValue('description',complaint.description);
+  if (complaint) {
+    setValue("title", complaint.title);
+    setValue("category", complaint.category);
+    setValue("location", complaint.location);
+    setValue("urgency", complaint.urgency);
+    setValue("description", complaint.description);
   }
 
   return (
-    <>
+    <div className="flex flex-col items-center p-5">
       {error && (
         <div
           id="dismiss-toast"
@@ -40,7 +43,7 @@ const ComplaintFormPage = ({onHandleFormSubmission,complaint}:ComplaintFormProps
         >
           <div className="flex p-4">
             <p className="text-sm text-gray-700 dark:text-neutral-400">
-              Your email has been sent
+              {error}
             </p>
 
             <div className="ms-auto">
@@ -58,9 +61,9 @@ const ComplaintFormPage = ({onHandleFormSubmission,complaint}:ComplaintFormProps
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
                   <path d="M18 6 6 18"></path>
                   <path d="m6 6 12 12"></path>
@@ -71,28 +74,31 @@ const ComplaintFormPage = ({onHandleFormSubmission,complaint}:ComplaintFormProps
         </div>
       )}
       <form
-        action=""
-        className="space-y-3 max-w-lg p-2"
+        className="space-y-3 w-full max-w-2xl p-5 bg-white shadow-lg rounded-lg"
         onSubmit={handleSubmit(async (data) => {
           try {
             setIsSubmitting(true);
-            data.userEmailId=userData?.user?.email!
-            console.log(data)
+            data.userEmailId = userData?.user?.email!;
             onHandleFormSubmission(data);
             router.push("/complaints");
           } catch (error) {
             setIsSubmitting(false);
-            setError("An unexpected error occured Try Again");
+            setError("An unexpected error occurred. Try Again");
           }
         })}
       >
-        <div className="max-w-full ">
-          <label htmlFor="title" id="titlefield" className=" block text-lg font-medium mb-2">
+        <div className="w-full">
+          <label
+            htmlFor="title"
+            id="titlefield"
+            className="block text-lg font-medium mb-2"
+          >
             Title
           </label>
           <input
             className="py-3 px-4 w-full border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500"
             type="text"
+            id="title"
             placeholder="Title"
             {...register("title", {
               required: "This field is required",
@@ -105,12 +111,15 @@ const ComplaintFormPage = ({onHandleFormSubmission,complaint}:ComplaintFormProps
           )}
         </div>
         <div>
+          <label htmlFor="category" className="block text-lg font-medium mb-2">
+            Category
+          </label>
           <select
-            id=""
-            className="py-3 px-4  block w-50 bg-gray-100 border-transparent rounded-full text-sm focus:border-blue-500 focus:ring-blue-500"
+            id="category"
+            className="py-3 px-4 w-full bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
             {...register("category", { required: "This field is required" })}
           >
-            <option value={""}>Select the category</option>
+            <option value="">Select the category</option>
             <option value="CLASSROOM">CLASSROOM</option>
             <option value="LABORATORY">LABORATORY</option>
             <option value="RESTROOMS">RESTROOMS</option>
@@ -126,12 +135,13 @@ const ComplaintFormPage = ({onHandleFormSubmission,complaint}:ComplaintFormProps
             </p>
           )}
         </div>
-        <div className="max-w-sm">
+        <div className="w-full">
           <label htmlFor="location" className="block text-lg font-medium mb-2">
             Location
           </label>
           <textarea
-            className="py-3 px-4 block w-full bg-gray-100 border-transparent rounded-lg text-sm "
+            id="location"
+            className="py-3 px-4 block w-full bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
             rows={3}
             placeholder="Enter location"
             {...register("location", {
@@ -145,16 +155,16 @@ const ComplaintFormPage = ({onHandleFormSubmission,complaint}:ComplaintFormProps
             </p>
           )}
         </div>
-        <div></div>
-        <div className="max-w-sm">
+        <div className="w-full">
           <label
             htmlFor="description"
             className="block text-lg font-medium mb-2"
           >
-            description
+            Description
           </label>
           <textarea
-            className="py-3 px-4 block w-full bg-gray-100 border-transparent rounded-lg text-sm "
+            id="description"
+            className="py-3 px-4 block w-full bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
             rows={5}
             placeholder="Enter description"
             {...register("description", {
@@ -169,12 +179,15 @@ const ComplaintFormPage = ({onHandleFormSubmission,complaint}:ComplaintFormProps
           )}
         </div>
         <div>
+          <label htmlFor="urgency" className="block text-lg font-medium mb-2">
+            Urgency
+          </label>
           <select
             {...register("urgency", { required: "This field is required" })}
-            id=""
-            className="py-3 px-4  block w-50 bg-gray-100 border-transparent rounded-full text-sm focus:border-blue-500 focus:ring-blue-500"
+            id="urgency"
+            className="py-3 px-4 w-full bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
           >
-            <option value={""}>Select the issue severity</option>
+            <option value="">Select the issue severity</option>
             <option value="LOW">LOW</option>
             <option value="MEDIUM">MEDIUM</option>
             <option value="HIGH">HIGH</option>
@@ -185,19 +198,26 @@ const ComplaintFormPage = ({onHandleFormSubmission,complaint}:ComplaintFormProps
             </p>
           )}
         </div>
-        <div>
+        <div className="flex justify-center space-x-3 mt-5">
           <button
             type="submit"
-            className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 "
+            className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700"
             disabled={isSubmitting}
           >
-            submit {isSubmitting&&(<div className="animate-spin inline-block size-6 border-[3px] border-current border-t-transparent text-white-800 rounded-full dark:text-blue-500" role="status" aria-label="loading">
-  <span className="sr-only">Loading...</span>
-</div>)}
+            Submit{" "}
+            {isSubmitting && (
+              <div
+                className="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-white rounded-full"
+                role="status"
+                aria-label="loading"
+              >
+                <span className="sr-only">Loading...</span>
+              </div>
+            )}
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 

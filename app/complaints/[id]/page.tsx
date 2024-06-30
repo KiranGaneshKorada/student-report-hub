@@ -27,12 +27,11 @@ const IssueDetailPage = ({ params: { id } }: IssueDetailPageProps) => {
   const { data } = useSession();
   const router = useRouter();
 
-
   const handleDelete = async () => {
     try {
-      await axios.delete('/api/complaints/' + id);
-      toast.success('Complaint deleted successfully!', {
-        position: 'top-right',
+      await axios.delete("/api/complaints/" + id);
+      toast.success("Complaint deleted successfully!", {
+        position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -40,11 +39,11 @@ const IssueDetailPage = ({ params: { id } }: IssueDetailPageProps) => {
         draggable: true,
         progress: undefined,
       });
-      router.push('/complaints');
+      router.push("/complaints");
       router.refresh();
     } catch (error) {
-      toast.error('Failed to delete the complaint.', {
-        position: 'top-right',
+      toast.error("Failed to delete the complaint.", {
+        position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -127,6 +126,7 @@ const IssueDetailPage = ({ params: { id } }: IssueDetailPageProps) => {
             Title
           </label>
           <input
+            id="title"
             className="py-3 px-4 w-full border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500"
             type="text"
             placeholder="Title"
@@ -161,6 +161,7 @@ const IssueDetailPage = ({ params: { id } }: IssueDetailPageProps) => {
             Location
           </label>
           <textarea
+            id="location"
             className="py-3 px-4 block w-full bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
             rows={3}
             placeholder="Enter location"
@@ -177,6 +178,7 @@ const IssueDetailPage = ({ params: { id } }: IssueDetailPageProps) => {
             Description
           </label>
           <textarea
+            id="description"
             className="py-3 px-4 block w-full bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
             rows={5}
             placeholder="Enter description"
@@ -226,9 +228,12 @@ const IssueDetailPage = ({ params: { id } }: IssueDetailPageProps) => {
       </div>
       {data?.user?.email === complaint?.userEmailId && (
         <div className="flex space-x-3 mt-5">
-          <button className="py-3 px-5 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
-            <Link href={`/complaints/${complaint?.id}/edit`}>Edit</Link>
-          </button>
+          <Link
+            href={`/complaints/${complaint?.id}/edit`}
+            className="py-3 px-5 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+          >
+            Edit
+          </Link>
           <button
             className="py-3 px-5 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
             onClick={handleDelete}
