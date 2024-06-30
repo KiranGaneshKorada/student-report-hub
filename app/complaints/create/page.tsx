@@ -1,13 +1,18 @@
 'use client'
 import axios from "axios";
 import ComplaintFormPage from "../_helper_components/ComplaintForm";
-import router from "next/router";
 import { ComplaintSchema } from "../_helper_components/ComplaintsTable";
+import { useRouter } from "next/navigation";
 
 const CreateComplaintsPage = () => {
+  const router = useRouter();
+
   
   const onHandleFormSubmission = async (data: ComplaintSchema) => {
-    await axios.post("/api/complaints", data);
+    try {
+      await axios.post("/api/complaints", data);
+      router.push("/");
+    } catch (error) {}
   };
   return <ComplaintFormPage onHandleFormSubmission={onHandleFormSubmission}/>;
 };

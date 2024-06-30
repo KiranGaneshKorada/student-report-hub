@@ -30,7 +30,10 @@ const EditComplaintPage = ({ params: { id } }: EditComplaintPageProps) => {
     router.push("/complaints/" + id);
   }
   const onHandleFormSubmission = (data: ComplaintSchema) => {
-    axios.patch(`/api/complaints/${id}`, data);
+    try {
+      axios.patch(`/api/complaints/${id}`, data);
+      router.push("/complaints");
+    } catch (error) {}
   };
 
   if (isLoading) {
@@ -75,7 +78,6 @@ const EditComplaintPage = ({ params: { id } }: EditComplaintPageProps) => {
             <div className="py-3 px-4 w-full bg-gray-200 border-transparent rounded-lg"></div>
           </div>
         </div>
-
 
         <div className="flex space-x-3 mt-5">
           <div className="py-3 px-5 bg-gray-200 rounded-lg"></div>

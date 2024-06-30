@@ -80,7 +80,6 @@ const ComplaintFormPage = ({
             setIsSubmitting(true);
             data.userEmailId = userData?.user?.email!;
             onHandleFormSubmission(data);
-            router.push("/complaints");
           } catch (error) {
             setIsSubmitting(false);
             setError("An unexpected error occurred. Try Again");
