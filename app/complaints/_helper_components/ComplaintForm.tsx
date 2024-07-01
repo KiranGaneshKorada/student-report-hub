@@ -90,12 +90,12 @@ const ComplaintFormPage = ({
           <label
             htmlFor="title"
             id="titlefield"
-            className="block text-lg font-medium mb-2"
+            className="block text-lg font-medium mb-2 text-black"
           >
             Title
           </label>
           <input
-            className="py-3 px-4 w-full border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500"
+            className="py-3 px-4 w-full border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 text-black"
             type="text"
             id="title"
             placeholder="Title"
@@ -110,12 +110,12 @@ const ComplaintFormPage = ({
           )}
         </div>
         <div>
-          <label htmlFor="category" className="block text-lg font-medium mb-2">
+          <label htmlFor="category" className="block text-lg font-medium mb-2 text-black">
             Category
           </label>
           <select
             id="category"
-            className="py-3 px-4 w-full bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
+            className="py-3 px-4 w-full bg-gray-100 border-transparent rounded-lg text-black text-sm focus:border-blue-500 focus:ring-blue-500"
             {...register("category", { required: "This field is required" })}
           >
             <option value="">Select the category</option>
@@ -135,12 +135,12 @@ const ComplaintFormPage = ({
           )}
         </div>
         <div className="w-full">
-          <label htmlFor="location" className="block text-lg font-medium mb-2">
+          <label htmlFor="location" className="block text-lg text-black font-medium mb-2">
             Location
           </label>
           <textarea
             id="location"
-            className="py-3 px-4 block w-full bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
+            className="py-3 px-4 block w-full bg-gray-100 border-transparent rounded-lg text-black text-sm focus:border-blue-500 focus:ring-blue-500"
             rows={3}
             placeholder="Enter location"
             {...register("location", {
@@ -157,13 +157,13 @@ const ComplaintFormPage = ({
         <div className="w-full">
           <label
             htmlFor="description"
-            className="block text-lg font-medium mb-2"
+            className="block text-lg text-black font-medium mb-2"
           >
             Description
           </label>
           <textarea
             id="description"
-            className="py-3 px-4 block w-full bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
+            className="py-3 px-4 block w-full text-black bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
             rows={5}
             placeholder="Enter description"
             {...register("description", {
@@ -178,13 +178,13 @@ const ComplaintFormPage = ({
           )}
         </div>
         <div>
-          <label htmlFor="urgency" className="block text-lg font-medium mb-2">
+          <label htmlFor="urgency" className="block text-black text-lg font-medium mb-2">
             Urgency
           </label>
           <select
             {...register("urgency", { required: "This field is required" })}
             id="urgency"
-            className="py-3 px-4 w-full bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
+            className="py-3 px-4 w-full text-black bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
           >
             <option value="">Select the issue severity</option>
             <option value="LOW">LOW</option>

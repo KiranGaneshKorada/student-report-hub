@@ -59,7 +59,7 @@ const IssueDetailPage = ({ params: { id } }: IssueDetailPageProps) => {
       <div className="flex flex-col items-center p-5">
         <div className="space-y-3 w-full max-w-2xl p-5 bg-white shadow-lg rounded-lg animate-pulse">
           <div className="w-full">
-            <label className="block text-lg font-medium mb-2">Title</label>
+            <label className="block text-lg  font-medium mb-2">Title</label>
             <div className="py-3 px-4 w-full border border-gray-200 rounded-lg bg-gray-200"></div>
           </div>
 
@@ -116,18 +116,18 @@ const IssueDetailPage = ({ params: { id } }: IssueDetailPageProps) => {
 
   return (
     <div className="flex flex-col items-center p-5">
-      <form className="space-y-3 w-full max-w-2xl p-5 bg-white shadow-lg rounded-lg">
+      <form className="space-y-3 w-full max-w-2xl  p-5 bg-white shadow-lg rounded-lg">
         <div className="w-full">
           <label
             htmlFor="title"
             id="titlefield"
-            className="block text-lg font-medium mb-2"
+            className="block text-lg text-black font-medium mb-2"
           >
             Title
           </label>
           <input
             id="title"
-            className="py-3 px-4 w-full border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500"
+            className="py-3 px-4 w-full border text-black border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500"
             type="text"
             placeholder="Title"
             value={complaint?.title}
@@ -136,12 +136,12 @@ const IssueDetailPage = ({ params: { id } }: IssueDetailPageProps) => {
         </div>
 
         <div>
-          <label htmlFor="category" className="block text-lg font-medium mb-2">
+          <label htmlFor="category" className="text-black block text-lg font-medium mb-2">
             Category
           </label>
           <select
             id="category"
-            className="py-3 px-4 w-full bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
+            className="py-3 px-4 w-full text-black bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
             value={complaint?.category}
             disabled
           >
@@ -157,12 +157,12 @@ const IssueDetailPage = ({ params: { id } }: IssueDetailPageProps) => {
         </div>
 
         <div className="w-full">
-          <label htmlFor="location" className="block text-lg font-medium mb-2">
+          <label htmlFor="location" className="block text-black text-lg font-medium mb-2">
             Location
           </label>
           <textarea
             id="location"
-            className="py-3 px-4 block w-full bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
+            className="py-3 px-4 block w-full text-black bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
             rows={3}
             placeholder="Enter location"
             value={complaint?.location}
@@ -173,13 +173,13 @@ const IssueDetailPage = ({ params: { id } }: IssueDetailPageProps) => {
         <div className="w-full">
           <label
             htmlFor="description"
-            className="block text-lg font-medium mb-2"
+            className="block text-lg text-black font-medium mb-2"
           >
             Description
           </label>
           <textarea
             id="description"
-            className="py-3 px-4 block w-full bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
+            className="py-3 px-4 block text-black w-full bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
             rows={5}
             placeholder="Enter description"
             value={complaint?.description}
@@ -188,12 +188,12 @@ const IssueDetailPage = ({ params: { id } }: IssueDetailPageProps) => {
         </div>
 
         <div>
-          <label htmlFor="urgency" className="block text-lg font-medium mb-2">
+          <label htmlFor="urgency" className="block text-black text-lg font-medium mb-2">
             Urgency
           </label>
           <select
             id="urgency"
-            className="py-3 px-4 w-full bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
+            className="py-3 px-4 w-full bg-gray-100 text-black border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
             value={complaint?.urgency}
             disabled
           >
@@ -204,12 +204,12 @@ const IssueDetailPage = ({ params: { id } }: IssueDetailPageProps) => {
         </div>
 
         <div>
-          <label htmlFor="status" className="block text-lg font-medium mb-2">
+          <label htmlFor="status" className="block text-black text-lg font-medium mb-2">
             Status
           </label>
           <select
             id="status"
-            className="py-3 px-4 w-full bg-gray-100 border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
+            className="py-3 px-4 w-full bg-gray-100 text-black border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
             value={complaint?.status}
             disabled
           >
@@ -221,8 +221,8 @@ const IssueDetailPage = ({ params: { id } }: IssueDetailPageProps) => {
       </form>
 
       <div className="w-full max-w-2xl mt-5 p-5 bg-white shadow-lg rounded-lg">
-        <p className="text-lg font-medium mb-2">Reported By:</p>
-        <p className="py-3 px-4 border border-gray-200 rounded-lg">
+        <p className="text-lg font-medium mb-2 text-black">Reported By:</p>
+        <p className="py-3 px-4 border text-black border-gray-200 rounded-lg">
           {complaint?.userEmailId}
         </p>
       </div>
