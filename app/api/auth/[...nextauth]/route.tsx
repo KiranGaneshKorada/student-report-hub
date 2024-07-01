@@ -14,11 +14,11 @@ const handler = NextAuth({
       name: "Credentials",
       credentials: {
         student_email: {
-          label: "Student Email",
+          label: "Student Email : student1@college.edu (for testing)",
           type: "Email",
           placeholder: "student_id@college_name.edu",
         },
-        password: { label: "Password", type: "password" },
+        password: { label: "Password : 12345678 (for testing)", type: "password"},
       },
       async authorize(credentials, req) {
         if (!credentials?.student_email || !credentials.password) {
