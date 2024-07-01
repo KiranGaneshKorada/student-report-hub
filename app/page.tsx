@@ -34,6 +34,5 @@ export default async function Home() {
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Students Report Hub - Dashboard",
-  description: "View a summary of Complaints",
+  title: "Students Report Hub"
 };

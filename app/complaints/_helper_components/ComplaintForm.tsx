@@ -38,18 +38,18 @@ const ComplaintFormPage = ({
       {error && (
         <div
           id="dismiss-toast"
-          className="hs-removing:translate-x-5 hs-removing:opacity-0 transition duration-300 max-w-xs bg-white border border-gray-200 rounded-xl shadow-lg dark:bg-neutral-800 dark:border-neutral-700"
+          className="hs-removing:translate-x-5 hs-removing:opacity-0 transition duration-300 max-w-xs bg-white border border-gray-200 rounded-xl shadow-lg"
           role="alert"
         >
           <div className="flex p-4">
-            <p className="text-sm text-gray-700 dark:text-neutral-400">
+            <p className="text-sm text-gray-700">
               {error}
             </p>
 
             <div className="ms-auto">
               <button
                 type="button"
-                className="inline-flex flex-shrink-0 justify-center items-center size-5 rounded-lg text-gray-800 opacity-50 hover:opacity-100 focus:outline-none focus:opacity-100 dark:text-white"
+                className="inline-flex flex-shrink-0 justify-center items-center size-5 rounded-lg text-gray-800 opacity-50 hover:opacity-100 focus:outline-none focus:opacity-100 "
                 data-hs-remove-element="#dismiss-toast"
               >
                 <span className="sr-only">Close</span>
